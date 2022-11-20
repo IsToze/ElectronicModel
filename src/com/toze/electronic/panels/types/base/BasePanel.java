@@ -1,4 +1,4 @@
-package com.toze.electronic.panels.base;
+package com.toze.electronic.panels.types.base;
 
 import com.toze.electronic.Configuration;
 
@@ -11,6 +11,8 @@ public class BasePanel extends JPanel {
 
     public BasePanel(JFrame frame) {
         super();
+        this.setName("BasePanel");
+        this.setLayout(null);
         this.frame = frame;
     }
 
@@ -19,15 +21,15 @@ public class BasePanel extends JPanel {
 
         super.paintComponent(g);
 
-        g.setColor(new Color(15, 20, 31));
-        g.fillRect(0, 0, frame.getWidth(), frame.getHeight());
+        g.setColor(new Color(15, 20, 31)); // Background color
+        g.fillRect(0, 0, frame.getWidth(), frame.getHeight()); // Background set
 
         g.setColor(new Color(88, 97, 115)); // set grid color
 
-        for(int i = 0; i < frame.getWidth(); i += Configuration.GRID_SIZE) // Vertical lines
+        for (int i = 0; i < frame.getWidth(); i += Configuration.GRID_SIZE) // Vertical lines
             g.fillRect(i, 0, Configuration.LINE_SIZE, frame.getHeight());
 
-        for(int i = 0; i < frame.getHeight(); i += Configuration.GRID_SIZE) // Horizontal lines
+        for (int i = 0; i < frame.getHeight(); i += Configuration.GRID_SIZE) // Horizontal lines
             g.fillRect(0, i, frame.getWidth(), Configuration.LINE_SIZE);
 
     }
