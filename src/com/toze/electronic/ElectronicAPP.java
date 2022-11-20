@@ -4,6 +4,8 @@ public class ElectronicAPP {
 
     public ElectronicAPP(){
 
+        new Salut();
+
     }
 
 }
