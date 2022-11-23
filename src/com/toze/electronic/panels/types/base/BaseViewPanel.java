@@ -1,15 +1,15 @@
 package com.toze.electronic.panels.types.base;
 
-import com.toze.electronic.Configuration;
+import com.toze.electronic.api.Configuration;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class BasePanel extends JPanel {
+public class BaseViewPanel extends JPanel {
 
     private final JFrame frame;
 
-    public BasePanel(JFrame frame) {
+    public BaseViewPanel(JFrame frame) {
         super();
         this.setName("BasePanel");
         this.setLayout(null);

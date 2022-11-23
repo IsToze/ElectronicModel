@@ -1,5 +1,7 @@
 package com.toze.electronic.panels.menu;
 
+import com.toze.electronic.ElectronicApplication;
+
 import java.awt.*;
 import java.util.function.Consumer;
 
@@ -15,9 +17,9 @@ public interface MenuElement {
 
         private final String name;
         private final Color color;
-        private final Consumer<String> action;
+        private final Consumer<ElectronicApplication> action;
 
-        public MenuElementBuilder(String name, Color color, Consumer<String> action) {
+        public MenuElementBuilder(String name, Color color, Consumer<ElectronicApplication> action) {
             this.name = name;
             this.color = color;
             this.action = action;
@@ -39,7 +41,7 @@ public interface MenuElement {
 
                 @Override
                 public void action() {
-                    action.accept(name);
+                    action.accept(ElectronicApplication.getInstance());
                 }
 
             };

@@ -1,35 +1,20 @@
 package com.toze.electronic.panels;
 
-import com.toze.electronic.Configuration;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.util.TimerTask;
+import java.awt.event.MouseMotionListener;
 
-public abstract class JMovablePanel extends JPanel implements MouseListener {
+public abstract class JMovablePanel extends JPanel implements MouseListener, MouseMotionListener {
 
-    private Double[] position;
+    private Point currentLocation;
 
     public JMovablePanel() {
 
         super();
         this.addMouseListener(this);
-
-        new java.util.Timer().schedule(new TimerTask() {
-
-            @Override
-            public void run() {
-
-                try {
-                    JMovablePanel.this.updateLocation();
-                } catch (Exception ignored) {
-                }
-
-            }
-
-        }, 0, 1000 / Configuration.REFRESH_RATE);
+        this.addMouseMotionListener(this);
 
     }
 
@@ -44,36 +29,37 @@ public abstract class JMovablePanel extends JPanel implements MouseListener {
     @Override
     public void mousePressed(MouseEvent e) {
         if (e.getClickCount() == 1)
-            this.position = this.getMouseLocation();
+            this.currentLocation = MouseInfo.getPointerInfo().getLocation();
         else
-            this.position = null;
+            this.currentLocation = null;
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        this.position = null;
     }
 
     @Override
     public void mouseClicked(MouseEvent e) {
     }
 
-    private void updateLocation() {
+    @Override
+    public void mouseDragged(MouseEvent e) {
 
-        if (this.position == null)
+        if (this.currentLocation == null)
             return;
 
-        final Double[] mouseLocation = this.getMouseLocation();
-        this.setLocation((int) (this.getX() + (mouseLocation[0] - this.position[0])), (int) (this.getY() + (mouseLocation[1] - this.position[1])));
-        this.position = mouseLocation;
+        final Point newLocation = MouseInfo.getPointerInfo().getLocation();
+        this.setLocation(
+                this.getX() + (newLocation.x - this.currentLocation.x),
+                this.getY() + (newLocation.y - this.currentLocation.y)
+        );
+        this.currentLocation = newLocation;
 
     }
 
-    private Double[] getMouseLocation() {
-        final Point point = MouseInfo.getPointerInfo().getLocation();
-        return new Double[]{
-                point.getX(), point.getY()
-        };
+    @Override
+    public void mouseMoved(MouseEvent e) {
+
     }
 
 }

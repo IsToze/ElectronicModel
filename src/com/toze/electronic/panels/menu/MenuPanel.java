@@ -1,6 +1,6 @@
 package com.toze.electronic.panels.menu;
 
-import com.toze.electronic.Configuration;
+import com.toze.electronic.api.Configuration;
 import com.toze.electronic.panels.JMovablePanel;
 
 import javax.swing.*;
@@ -39,6 +39,10 @@ public class MenuPanel extends JMovablePanel {
         this.interactivePanel = new MenuInteractivePanel(this, this.elements);
         this.add(this.interactivePanel);
 
+    }
+
+    public MenuPanel(int x, int y, String title, List<MenuElement> elements) {
+        this(x, y, title, Color.RED, Color.YELLOW, elements);
     }
 
     public JLabel getTitle() {
