@@ -1,6 +1,6 @@
 package com.toze.electronic.panels.menu;
 
-import com.toze.electronic.Configuration;
+import com.toze.electronic.api.Configuration;
 import com.toze.electronic.panels.RoundedBorder;
 
 import javax.swing.*;

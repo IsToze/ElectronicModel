@@ -6,15 +6,16 @@ import com.toze.electronic.panels.menu.MenuPanel;
 import javax.swing.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 import java.util.concurrent.atomic.AtomicLong;
 
-public class CliquableJLabel extends JLabel implements MouseListener {
+public class ClickableJLabel extends JLabel implements MouseListener, MouseMotionListener {
 
     private final MenuElement element;
     private final MenuPanel menuPanel;
     private final AtomicLong delay = new AtomicLong(0);
 
-    public CliquableJLabel(MenuElement element, MenuPanel menuPanel) {
+    public ClickableJLabel(MenuElement element, MenuPanel menuPanel) {
 
         super("» " + element.getName());
 
@@ -26,6 +27,7 @@ public class CliquableJLabel extends JLabel implements MouseListener {
         this.setVerticalAlignment(SwingConstants.CENTER);
 
         this.addMouseListener(this);
+        this.addMouseMotionListener(this);
 
     }
 
@@ -60,4 +62,13 @@ public class CliquableJLabel extends JLabel implements MouseListener {
         this.menuPanel.mouseExited(e);
     }
 
+    @Override
+    public void mouseDragged(MouseEvent e) {
+        this.menuPanel.mouseDragged(e);
+    }
+
+    @Override
+    public void mouseMoved(MouseEvent e) {
+        this.menuPanel.mouseMoved(e);
+    }
 }

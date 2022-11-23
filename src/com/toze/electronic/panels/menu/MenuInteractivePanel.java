@@ -1,8 +1,8 @@
 package com.toze.electronic.panels.menu;
 
-import com.toze.electronic.Configuration;
+import com.toze.electronic.api.Configuration;
 import com.toze.electronic.panels.RoundedBorder;
-import com.toze.electronic.panels.menu.components.CliquableJLabel;
+import com.toze.electronic.panels.menu.components.ClickableJLabel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -31,11 +31,11 @@ public class MenuInteractivePanel extends JPanel {
         this.setBounds(0, Configuration.MENU_ELEMENT_HEIGHT, 200, 30 * elements.size());
         this.setVisible(false);
 
-        // Afficher les différents éléments du menu
+        // Show elements
         for (int i = 0; i < elements.size(); i++) {
 
             final MenuElement element = elements.get(i);
-            final JLabel text = new CliquableJLabel(element, this.menuPanel);
+            final JLabel text = new ClickableJLabel(element, this.menuPanel);
 
             text.setBounds(0, 30 * i, 200, 30);
             this.add(text);
