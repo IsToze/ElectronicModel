@@ -42,4 +42,10 @@ public class Position implements IPosition {
         return this.y != -1;
     }
 
+    @Override
+    public void divide(int gridSize) {
+        this.x /= gridSize;
+        this.y /= gridSize;
+    }
+
 }

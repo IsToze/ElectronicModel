@@ -1,13 +1,17 @@
 package com.toze.electronic.components.types;
 
-import com.toze.electronic.api.components.Setup;
-import com.toze.electronic.api.components.SetupType;
 import com.toze.electronic.api.components.types.ICable;
+import com.toze.electronic.components.BuildElement;
+import com.toze.electronic.components.Component;
 
-public class Cable implements ICable {
+public class Cable extends Component implements ICable {
 
     private double intensity;
     private double voltage;
+
+    public Cable() {
+        super();
+    }
 
     @Override
     public void setTensionInput(double tension) {
@@ -27,11 +31,6 @@ public class Cable implements ICable {
     @Override
     public double getIntensityOutput() {
         return this.intensity;
-    }
-
-    @Override
-    public Setup getSetup() {
-        return new Setup(SetupType.LINE);
     }
 
 }

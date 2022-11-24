@@ -21,6 +21,7 @@ public class ElectronicApplication {
     private final ElementView elementView;
     private final IElementModel elementModel;
     private final IElementController elementController;
+
     private ElectronicApplication() {
 
         RapidityCheck.register("startup");
@@ -30,9 +31,9 @@ public class ElectronicApplication {
         final JFrame frame = getMainFrame();
 
         this.baseView = new BaseViewPanel(frame);
-        this.elementView = new ElementView(frame);
-        this.elementModel = new ElementModel(this);
-        this.elementController = new ElementController(this, this.elementModel, this.elementView);
+        this.elementController = new ElementController();
+        this.elementModel = new ElementModel(this.elementController);
+        this.elementView = new ElementView(frame, this.elementModel, this.elementController);
 
         this.addViews(frame);
         frame.setVisible(true);
@@ -72,7 +73,7 @@ public class ElectronicApplication {
         return logger;
     }
 
-    public BaseViewPanel getView() {
+    public BaseViewPanel getViewPanel() {
         return baseView;
     }
 

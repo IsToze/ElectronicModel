@@ -1,6 +1,8 @@
 package com.toze.electronic.api.components;
 
-public interface IBuildElement {
+import com.toze.electronic.api.view.Observer;
+
+public interface IBuildElement extends Observer {
 
     /**
      * @return The element that is being built.
