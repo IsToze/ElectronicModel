@@ -1,5 +1,6 @@
 package com.toze.electronic.api.components.types;
 
+import com.toze.electronic.api.components.ComponentType;
 import com.toze.electronic.api.components.IComponent;
 
 /**
@@ -8,5 +9,10 @@ import com.toze.electronic.api.components.IComponent;
  * The cable is a simple element that does not change the voltage or the intensity of the electricity.
  */
 public interface ICable extends IComponent {
+
+    @Override
+    default ComponentType getType() {
+        return ComponentType.CABLE;
+    }
 
 }

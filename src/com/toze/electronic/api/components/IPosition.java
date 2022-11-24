@@ -32,4 +32,9 @@ public interface IPosition {
      */
     boolean hasY();
 
+    /**
+     * divide the x and y coordinates by the parameter
+     */
+    void divide(int gridSize);
+
 }

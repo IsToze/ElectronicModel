@@ -7,6 +7,11 @@ package com.toze.electronic.api.components;
 public interface IComponent {
 
     /**
+     * @return the position of the component.
+     */
+    ComponentType getType();
+
+    /**
      * Define the tension in input of the component.
      */
     void setTensionInput(double tension);
@@ -25,10 +30,5 @@ public interface IComponent {
      * @return component output current.
      */
     double getIntensityOutput();
-
-    /**
-     * @return input parameters (depend of the component).
-     */
-    Setup getSetup();
 
 }
